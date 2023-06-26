@@ -22,4 +22,5 @@ const Root = () => (
     </EventProvider>
 )
 
+
 AppRegistry.registerComponent(appName, () => Root);

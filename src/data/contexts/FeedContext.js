@@ -12,28 +12,28 @@ export const FeedProvider = ({ children }) => {
 
     const feedInternalContext = {
         posts,
-        fetchPosts: async function() {
+        fetchPosts: async function () {
             try {
                 const res = await axios.get('/posts.json')
                 const rawPosts = res.data
                 const postsTemp = []
-                for(let key in rawPosts) {
+                for (let key in rawPosts) {
                     postsTemp.push({
                         ...rawPosts[key],
                         id: key
                     })
                 }
                 setPosts(postsTemp)
-            } catch(err) {
+            } catch (err) {
                 setMessage(err.message, 'Erro')
             }
         },
-        addPost: async function(post) {
+        addPost: async function (post) {
             try {
                 startingUpload()
                 const resStorage = await axios({
                     url: 'uploadImage',
-                    baseURL: 'https://us-central1-instaclone-b78e8.cloudfunctions.net',
+                    baseURL: 'https://us-central1-meta-money-984c3.cloudfunctions.net',
                     method: 'post',
                     data: {
                         image: post.image.base64
@@ -43,19 +43,19 @@ export const FeedProvider = ({ children }) => {
                 await axios.post(`/posts.json?auth=${token}`, post)
                 finishedUpload()
                 feedInternalContext.fetchPosts()
-            } catch(err) {
+            } catch (err) {
                 setMessage(err.message, 'Erro')
                 finishedUpload()
             }
         },
-        addComment: async function(postId, comment) {
+        addComment: async function (postId, comment) {
             try {
                 const res = await axios.get(`/posts/${postId}.json`)
                 const comments = res.data.comments || []
                 comments.push(comment)
-                await axios.patch(`/posts/${postId}.json?auth=${token}`, {comments})
+                await axios.patch(`/posts/${postId}.json?auth=${token}`, { comments })
                 feedInternalContext.fetchPosts()
-            } catch(err) {
+            } catch (err) {
                 setMessage(err.message, 'Erro')
             }
         }

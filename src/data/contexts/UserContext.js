@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react"
 import axios from 'axios'
 
 const FIREBASE_AUTH_BASE_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty'
-const API_KEY = 'AIzaSyDjxPZYlXYyhz40ynbJ6HarXq4LQIGlijI'
+const API_KEY = 'AIzaSyBq6m5ve2sSrcwwVtBVnDx9-YHpq0kIGW4'
 
 import useEvent from '../hooks/useEvent'
 

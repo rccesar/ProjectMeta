@@ -4,8 +4,8 @@ const fs = require('fs')
 const uuid = require('uuid-v4')
 const { Storage } = require('@google-cloud/storage')
 const storage = new Storage({
-    projectId: 'instaclone-b78e8',
-    keyFilename: 'instaclone-b78e8.json'
+    projectId: 'meta-money-984c3',
+    keyFilename: 'meta-money-984c3-firebase.json'
 })
 
 exports.uploadImage = functions.https.onRequest((request, response) => {
@@ -14,7 +14,7 @@ exports.uploadImage = functions.https.onRequest((request, response) => {
             fs.writeFileSync('/tmp/imageToSave.jpg', 
                 request.body.image, 'base64')
             
-            const bucket = storage.bucket('instaclone-b78e8.appspot.com')
+            const bucket = storage.bucket('meta-money-984c3.appspot.com')
             const id = uuid()
             bucket.upload('/tmp/imageToSave.jpg', {
                 uploadType: 'media',

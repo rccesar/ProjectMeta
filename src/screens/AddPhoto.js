@@ -40,7 +40,7 @@ export default props => {
         })
     }
     
-    const pickPhoto = () => {
+/*     const pickPhoto = () => {
         launchCamera({
             mediaType: 'photo',
             includeBase64: true,
@@ -52,14 +52,14 @@ export default props => {
                 setImage({ uri: res.assets[0].uri, base64: res.assets[0].base64 })
             }
         })
-    }
+    } */
 
     const save = () => {
         addPost({
             id: Math.random(),
             nickname,
             email,
-            image,
+            image: image ? image : null,
             comments: [{nickname, comment}]
         })
     }
@@ -75,25 +75,27 @@ export default props => {
             <View style={styles.container}>
                 <Text style={styles.title}>Compartilhe uma imagem</Text>
                 <View style={styles.imageContainer}>
-                    <Image source={image} style={styles.image} />
+                <Image source={image ? image : null} style={styles.image} />
                 </View>
                 <View style={styles.buttomRow}>
-                    <TouchableOpacity onPress={pickPhoto} disabled={!canEdit()}
+                    {/* <TouchableOpacity onPress={pickPhoto} disabled={!canEdit()}
                             style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]}>
                         <Text style={styles.buttomText}>Tirar uma foto</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <TouchableOpacity onPress={pickImage} disabled={!canEdit()} 
                             style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]}>
                         <Text style={styles.buttomText}>Escolha a foto</Text>
                     </TouchableOpacity>
                 </View>
-                <TextInput placeholder='Algum comentário para a foto?'
+                <TextInput placeholder='Qual a Legenda ?'
                     style={styles.input} value={comment}
-                    onChangeText={setComment} editable={canEdit()} />
+                    onChangeText={setComment} editable={canEdit()}  />
+                    
                 <TouchableOpacity onPress={save} disabled={!canEdit()}
                     style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]} >
                     <Text style={styles.buttomText}>Salvar</Text>
                 </TouchableOpacity>
+               
             </View>
         </ScrollView>
     )
@@ -102,17 +104,26 @@ export default props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#000000'
+        
+    },
+    TextInput:{
+        marginTop: 30,
+        padding: 10,
+        backgroundColor: '#0195f7',
+        borderRadius: 10,
+        color: '#FFF',
     },
     title: {
         fontSize: 20,
         marginTop: Platform.OS === 'ios' ? 30 : 10,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#FFF',
     },
     imageContainer: {
         width: '90%',
         height: Dimensions.get('window').width / 2,
-        backgroundColor: '#EEE',
         marginTop: 10
     },
     image: {
@@ -132,13 +143,17 @@ const styles = StyleSheet.create({
     },
     buttomText: {
         fontSize: 20,
-        color: '#FFF'
+        color: '#FFF',
+        borderRadius: 10,
     },
     input: {
         marginTop: 20,
-        width: '90%'
+        width: '90%',
+        color: '#FFF',
     },
     buttomDisabled: {
         backgroundColor: '#666'
-    }
+    },
+    
+    
 })

@@ -13,7 +13,7 @@ export default props => {
         <View style={styles.container}>
             <Image source={require('../../assets/imgs/icon.png')}
                 style={styles.image} />
-            <Text style={styles.header}>Meta Money</Text>
+            <Text style={styles.header}>Metamoney</Text>
         </View>
     )
 }
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#000000',
     },
     image: {
         height: 200,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 50,
-        color: "#000",
+        color: "#0195f7",
         fontFamily: 'shelter',
     }
 })

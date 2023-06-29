@@ -18,7 +18,7 @@ export default props => {
         <View style={styles.container}>
             <View style={styles.rowContainer}>
                 <Image source={icon} style={styles.image}/>
-                <Text style={styles.title}>Meta Money</Text>
+                <Text style={styles.title}>Metamoney</Text>
             </View>
             <View style={styles.userContainer}>
                 <Text style={styles.user}>{username}</Text>
@@ -33,10 +33,11 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 20 : 0,
         padding: 10,
         borderBottomWidth: 1,
-        borderColor: '#BBB',
+        borderColor: '#000000',
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: '#000000'
     },
     rowContainer: {
         flexDirection: 'row',
@@ -48,10 +49,11 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     title: {
-        color: "#000",
+        color: "#0195f7",
         fontFamily: 'shelter',
-        height: 30,
-        fontSize: 15
+        fontSize: 15,
+        
+
     },
     userContainer: {
         flexDirection: 'row',
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     },
     user: {
         fontSize: 10,
-        color: '#888'
+        color: "#F8F8FF",
     },
     avatar: {
         width: 30,

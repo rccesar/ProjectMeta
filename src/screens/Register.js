@@ -25,7 +25,7 @@ export default props => {
             <TextInput placeholder='Senha' style={styles.input}
                 secureTextEntry={true} value={password} onChangeText={setPassword} />
             <TouchableOpacity onPress={() => createUser({name, email, password})} style={styles.buttom}>
-                <Text style={styles.buttomText}>Salvar</Text>
+                <Text style={styles.buttomText}>Registrar</Text>
             </TouchableOpacity>
         </View>
     )
@@ -35,24 +35,35 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: '#000000'
     },
     buttom: {
-        marginTop: 30,
-        padding: 10,
-        backgroundColor: '#4286f4'
+        marginTop: 20,
+        width: '90%',
+        backgroundColor: '#4286f4'      ,
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#333',
+        color: '#F8F8FF',
+        borderRadius: 10,
     },
     buttomText: {
+       
         fontSize: 20,
-        color: '#FFF'
+        color: '#FFF',
+        borderRadius: 10,
+        textAlign: 'center',
     },
     input: {
         marginTop: 20,
         width: '90%',
-        backgroundColor: '#EEE',
+        backgroundColor: '#333',
         height: 40,
         borderWidth: 1,
         borderColor: '#333',
-        paddingLeft: 15
+        color: '#F8F8FF',
+        borderRadius: 10,
     }
 })
+

@@ -7,6 +7,7 @@ import {
     StyleSheet
 } from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon5 from 'react-native-vector-icons/FontAwesome5'
 import useFeed from "../data/hooks/useFeed"
 import useUser from "../data/hooks/useUser"
 
@@ -31,7 +32,7 @@ export default ({postId}) => {
                     value={comment} onChangeText={setComment}
                     onSubmitEditing={handleAddComment} />
                 <TWF onPress={() => setEditMode(false)}>
-                    <Icon name='times' size={15} color='#555' />
+                    <Icon5 name='times-circle' size={25} color='#555' />
                 </TWF>
             </View>
         )
@@ -39,7 +40,7 @@ export default ({postId}) => {
         commentArea = (
             <TWF onPress={() => setEditMode(true)}>
                 <View style={styles.container}>
-                    <Icon name='comment-o' size={25} color='#555' />
+                    <Icon5 name='comment-dots' size={25} color='#555' />
                     <Text style={styles.caption}>Adicione um comentário...</Text>
                 </View>
             </TWF>

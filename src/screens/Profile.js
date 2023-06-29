@@ -25,7 +25,9 @@ export default props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#000000'
+        
     },
     avatar: {
         width: 150,
@@ -36,19 +38,23 @@ const styles = StyleSheet.create({
     nickname: {
         marginTop: 30,
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#444',
     },
     email: {
         marginTop: 20,
-        fontSize: 25
+        fontSize: 25,
+        color: '#444',
     },
     buttom: {
         marginTop: 30,
         padding: 10,
-        backgroundColor: '#4286f4'
+        backgroundColor: '#4286f4',
+        borderRadius: 10,
     },
     buttomText: {
         fontSize: 20,
-        color: '#FFF'
+        color: '#FFF',
+        
     }
 })

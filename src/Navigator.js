@@ -52,7 +52,7 @@ export default props => {
                         backgroundColor: '#000000'
                     },
                         tabBarIcon: ({ color, size, }) =>
-                            <Ionicons name={routeIcon[route.name]} size={size} color={color} />
+                            <Ionicons name={routeIcon[route.name]} size={size} color={'#F0F8FF'} />
 
                     })}>
                 <Tab.Screen name="Feed" component={Feed} />

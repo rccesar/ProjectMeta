@@ -1,23 +1,23 @@
 import React, { useState } from "react"
-import { 
-    Alert, 
-    View, 
-    StyleSheet, 
-    ScrollView, 
-    Image, 
-    Text, 
-    TextInput, 
+import {
+    Alert,
+    View,
+    StyleSheet,
+    ScrollView,
+    Image,
+    Text,
+    TextInput,
     Dimensions,
-    TouchableOpacity 
+    TouchableOpacity
 } from "react-native";
 import useEffectIf from "../hooks/UseEffectIf";
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import useFeed from '../data/hooks/useFeed'
 import useUser from '../data/hooks/useUser'
 import useEvent from '../data/hooks/useEvent';
 
 export default props => {
-    const [image, setImage] = useState(null) 
+    const [image, setImage] = useState(null)
     const [comment, setComment] = useState('')
 
     const { addPost } = useFeed()
@@ -36,23 +36,23 @@ export default props => {
             if (!res.didCancel) {
                 setImage({ uri: res.assets[0].uri, base64: res.assets[0].base64 })
             }
-            
+
         })
     }
-    
-/*     const pickPhoto = () => {
-        launchCamera({
-            mediaType: 'photo',
-            includeBase64: true,
-            saveToPhotos: true,
-            maxHeight: 600,
-            maxWidth: 800
-        }, res => {
-            if (!res.didCancel) {
-                setImage({ uri: res.assets[0].uri, base64: res.assets[0].base64 })
-            }
-        })
-    } */
+
+    /*     const pickPhoto = () => {
+            launchCamera({
+                mediaType: 'photo',
+                includeBase64: true,
+                saveToPhotos: true,
+                maxHeight: 600,
+                maxWidth: 800
+            }, res => {
+                if (!res.didCancel) {
+                    setImage({ uri: res.assets[0].uri, base64: res.assets[0].base64 })
+                }
+            })
+        } */
 
     const save = () => {
         addPost({
@@ -60,7 +60,7 @@ export default props => {
             nickname,
             email,
             image: image ? image : null,
-            comments: [{nickname, comment}]
+            comments: [{ nickname, comment }]
         })
     }
 
@@ -75,27 +75,33 @@ export default props => {
             <View style={styles.container}>
                 <Text style={styles.title}>Compartilhe uma imagem</Text>
                 <View style={styles.imageContainer}>
-                <Image source={image ? image : null} style={styles.image} />
+                    <Image source={image ? image : null} style={styles.image} />
                 </View>
                 <View style={styles.buttomRow}>
                     {/* <TouchableOpacity onPress={pickPhoto} disabled={!canEdit()}
                             style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]}>
                         <Text style={styles.buttomText}>Tirar uma foto</Text>
                     </TouchableOpacity> */}
-                    <TouchableOpacity onPress={pickImage} disabled={!canEdit()} 
-                            style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]}>
+                    <TouchableOpacity onPress={pickImage} disabled={!canEdit()}
+                        style={[styles.buttom, canEdit() ? {} : styles.buttomDisabled]}>
                         <Text style={styles.buttomText}>Escolha a foto</Text>
                     </TouchableOpacity>
                 </View>
-                <TextInput placeholder='Qual a Legenda ?'
-                    style={styles.input} value={comment}
-                    onChangeText={setComment} editable={canEdit()}  />
-                    
+                <TouchableOpacity style={styles.legenda}>
+                    <TextInput
+                        placeholder='Qual a Legenda ?'
+                        style={styles.input}
+                        value={comment}
+                        onChangeText={setComment}
+                        editable={canEdit()}
+                    />
+                </TouchableOpacity>
+
                 <TouchableOpacity onPress={save} disabled={!canEdit()}
-                    style={[styles.buttom, canEdit()? {}: styles.buttomDisabled]} >
+                    style={[styles.buttom, canEdit() ? {} : styles.buttomDisabled]} >
                     <Text style={styles.buttomText}>Salvar</Text>
                 </TouchableOpacity>
-               
+
             </View>
         </ScrollView>
     )
@@ -106,9 +112,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#000000'
-        
+
     },
-    TextInput:{
+    TextInput: {
         marginTop: 30,
         padding: 10,
         backgroundColor: '#0195f7',
@@ -137,9 +143,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     },
     buttom: {
-        marginTop: 30,
-        padding: 10,
-        backgroundColor: '#4286f4'
+        backgroundColor: '#0195f7',
+        width: '84%',
+        height: 50,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
     },
     buttomText: {
         fontSize: 20,
@@ -154,6 +164,14 @@ const styles = StyleSheet.create({
     buttomDisabled: {
         backgroundColor: '#666'
     },
-    
-    
+    legenda: {
+        marginTop: 20,
+        width: '90%',
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#333',
+        color: '#F8F8FF',
+        borderRadius: 10,
+    }
+
 })

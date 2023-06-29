@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
         color: '#F8F8FF',
         borderRadius: 10,
     },
-    buttomText: {
-       
+    buttomText: { 
         fontSize: 20,
         color: '#FFF',
         borderRadius: 10,

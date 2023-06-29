@@ -23,10 +23,10 @@ export default props => {
                 secureTextEntry={true} value={password}
                 onChangeText={setPassword} />
             <TouchableOpacity onPress={() => login(email, password)} style={styles.buttom}>
-                <Text style={styles.buttomText}>Entrar</Text>
+                <Text style={styles.buttomText}> Entrar </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {props.navigation.navigate('Register')}} style={styles.buttom}>
-                <Text style={styles.buttomText}>Criar nova conta...</Text>
+                <Text style={styles.buttomText}> Criar nova conta... </Text>
             </TouchableOpacity>
         </View>
     )
@@ -42,24 +42,34 @@ const styles = StyleSheet.create({
         
     },
     buttom: {
-        marginTop: 30,
-        padding: 10,
         backgroundColor: '#0195f7',
+        width: '84%',
+        height: 45,
         borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+       
     },
     buttomText: {
+        marginTop: 20,
+        width: '90%',
         fontSize: 20,
         color: '#F8F8FF',
         borderRadius: 10,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
     },
     input: {
-        marginTop: 20,
-        width: '90%',
-        backgroundColor: '#333',
-        height: 40,
+        backgroundColor: '#3a3a3a',
+        width: '84%',
+        height: 50,
         borderWidth: 1,
-        borderColor: '#333',
-        color: '#F8F8FF',
-        borderRadius: 10,
+        borderRadius: 6,
+        paddingLeft: 8,
+        paddingRight: 6,
+        marginBottom: 20,
     }
-})
+})  

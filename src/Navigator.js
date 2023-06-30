@@ -44,7 +44,7 @@ export default props => {
 
     return (
         <NavigationContainer>
-            <Tab.Navigator initialRouteName="Feed"
+            <Tab.Navigator initialRouteName="Profile"
                 screenOptions={({ route }) => ({
                     headerShown: false,
                     tabBarShowLabel: false,

@@ -71,8 +71,7 @@ export default props => {
     }, uploading, false)
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
                 <Text style={styles.title}>Compartilhe uma imagem</Text>
                 <View style={styles.imageContainer}>
                     <Image source={image ? image : null} style={styles.image} />
@@ -87,29 +86,25 @@ export default props => {
                         <Text style={styles.buttomText}>Escolha a foto</Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.legenda}>
-                    <TextInput
-                        placeholder='Qual a Legenda ?'
-                        style={styles.input}
-                        value={comment}
-                        onChangeText={setComment}
-                        editable={canEdit()}
-                    />
-                </TouchableOpacity>
+                <TextInput
+                    placeholder='Alguma Legenda para a foto ?'
+                    style={styles.input} value={comment}
+                    onChangeText={setComment} editable={canEdit()} />
+
 
                 <TouchableOpacity onPress={save} disabled={!canEdit()}
                     style={[styles.buttom, canEdit() ? {} : styles.buttomDisabled]} >
                     <Text style={styles.buttomText}>Salvar</Text>
                 </TouchableOpacity>
 
-            </View>
+           
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         alignItems: 'center',
         backgroundColor: '#000000'
 
@@ -159,19 +154,10 @@ const styles = StyleSheet.create({
     input: {
         marginTop: 20,
         width: '90%',
-        color: '#FFF',
+        color: '#F0F8FF'
     },
     buttomDisabled: {
         backgroundColor: '#666'
     },
-    legenda: {
-        marginTop: 20,
-        width: '90%',
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#333',
-        color: '#F8F8FF',
-        borderRadius: 10,
-    }
 
 })
